@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservas_Vuelo", "Reservas_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservas_Admin", "Reservas_Admin\Reservas_Admin.csproj", "{320DC3FC-3A02-4550-B282-9C7672354BF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservas_Vuelo.DataLayer", "Reservas_Vuelo.DataLayer\Reservas_Vuelo.DataLayer.csproj", "{59DFBBA7-5A13-419E-825F-7B60498BA479}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{320DC3FC-3A02-4550-B282-9C7672354BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320DC3FC-3A02-4550-B282-9C7672354BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320DC3FC-3A02-4550-B282-9C7672354BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59DFBBA7-5A13-419E-825F-7B60498BA479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DFBBA7-5A13-419E-825F-7B60498BA479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DFBBA7-5A13-419E-825F-7B60498BA479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DFBBA7-5A13-419E-825F-7B60498BA479}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Reservas_Vuelo" Class="DataLayerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Reservas_Vuelo.mdf;Integrated Security=True" SettingsObjectName="Reservas_Vuelo.DataLayer.Properties.Settings" SettingsPropertyName="Reservas_VueloConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Asiento_Avion" Member="Asiento_Avions">
+    <Type Name="Asiento_Avion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id_Avion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="Asiento_Avion_Asiento_Viaje" Member="Asiento_Viajes" ThisKey="Id" OtherKey="Id_Asiento_Avion" Type="Asiento_Viaje" />
+      <Association Name="Avion_Asiento_Avion" Member="Avion" ThisKey="Id_Avion" OtherKey="Id" Type="Avion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Asiento_Viaje" Member="Asiento_Viajes">
+    <Type Name="Asiento_Viaje">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id_Viaje" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Asiento_Avion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Vuelo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Avion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Asiento_Viaje_Asientos_Venta" Member="Asientos_Ventas" ThisKey="Id" OtherKey="Id_Asientos_Viaje" Type="Asientos_Venta" />
+      <Association Name="Asiento_Avion_Asiento_Viaje" Member="Asiento_Avion" ThisKey="Id_Asiento_Avion" OtherKey="Id" Type="Asiento_Avion" IsForeignKey="true" />
+      <Association Name="Avion_Asiento_Viaje" Member="Avion" ThisKey="Id_Avion" OtherKey="Id" Type="Avion" IsForeignKey="true" />
+      <Association Name="Viaje_Asiento_Viaje" Member="Viaje" ThisKey="Id_Viaje" OtherKey="Id" Type="Viaje" IsForeignKey="true" />
+      <Association Name="Vuelo_Asiento_Viaje" Member="Vuelo" ThisKey="Id_Vuelo" OtherKey="Id" Type="Vuelo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Asientos_Venta" Member="Asientos_Ventas">
+    <Type Name="Asientos_Venta">
+      <Column Name="Id_Ventas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Asientos_Viaje" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Asiento_Viaje_Asientos_Venta" Member="Asiento_Viaje" ThisKey="Id_Asientos_Viaje" OtherKey="Id" Type="Asiento_Viaje" IsForeignKey="true" />
+      <Association Name="Venta_Asientos_Venta" Member="Venta" ThisKey="Id_Ventas" OtherKey="Id" Type="Venta" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Avion" Member="Avions">
+    <Type Name="Avion">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Association Name="Avion_Asiento_Avion" Member="Asiento_Avions" ThisKey="Id" OtherKey="Id_Avion" Type="Asiento_Avion" />
+      <Association Name="Avion_Asiento_Viaje" Member="Asiento_Viajes" ThisKey="Id" OtherKey="Id_Avion" Type="Asiento_Viaje" />
+      <Association Name="Avion_Vuelo" Member="Vuelos" ThisKey="Id" OtherKey="Id_Avion" Type="Vuelo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ciudad" Member="Ciudads">
+    <Type Name="Ciudad">
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Codigo" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Venta" Member="Ventas">
+    <Type Name="Venta">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Tarjeta" Type="System.String" DbType="VarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="Ccv" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Exp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Dir_Cobro" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Venta_Asientos_Venta" Member="Asientos_Ventas" ThisKey="Id" OtherKey="Id_Ventas" Type="Asientos_Venta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Viaje" Member="Viajes">
+    <Type Name="Viaje">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id_Vuelo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Association Name="Viaje_Asiento_Viaje" Member="Asiento_Viajes" ThisKey="Id" OtherKey="Id_Viaje" Type="Asiento_Viaje" />
+      <Association Name="Vuelo_Viaje" Member="Vuelo" ThisKey="Id_Vuelo" OtherKey="Id" Type="Vuelo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Vuelo" Member="Vuelos">
+    <Type Name="Vuelo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Origen" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Destino" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hora_Salida" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Hora_Llegada" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Avion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Vuelo_Asiento_Viaje" Member="Asiento_Viajes" ThisKey="Id" OtherKey="Id_Vuelo" Type="Asiento_Viaje" />
+      <Association Name="Vuelo_Viaje" Member="Viajes" ThisKey="Id" OtherKey="Id_Vuelo" Type="Viaje" />
+      <Association Name="Avion_Vuelo" Member="Avion" ThisKey="Id_Avion" OtherKey="Id" Type="Avion" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
