@@ -8,12 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Reservas_Vuelo
-{
-    public partial class SeleccionVuelo : Form
-    {
-        public SeleccionVuelo()
-        {
+namespace Reservas_Vuelo {
+    public partial class SeleccionVuelo : Form {
+        public SeleccionVuelo() {
             InitializeComponent();
             this.Height = 135;
         }
@@ -27,7 +24,7 @@ namespace Reservas_Vuelo
             if (this.Height > height) {
                 step = -step;
             }
-            while (Math.Abs(this.Height-height)>5) {
+            while (Math.Abs(this.Height - height) > 5) {
                 this.Height += step;
                 System.Threading.Thread.Sleep(5);
             }
@@ -50,6 +47,13 @@ namespace Reservas_Vuelo
 
         private void SeleccionVuelo_Load(object sender, EventArgs e) {
 
+        }
+
+        private void btnReservar_Click(object sender, EventArgs e) {
+            SeleccionAsiento sa = new SeleccionAsiento();
+            sa.Show();
+            sa.Previous = this;
+            this.Hide();
         }
     }
 }
