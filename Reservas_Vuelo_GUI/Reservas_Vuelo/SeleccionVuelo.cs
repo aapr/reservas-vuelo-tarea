@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Reservas_Vuelo.DataLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,8 @@ using System.Windows.Forms;
 
 namespace Reservas_Vuelo {
     public partial class SeleccionVuelo : Form {
+        private static DataLayerDataContext datacontext = new DataLayerDataContext();
+
         public SeleccionVuelo() {
             InitializeComponent();
             this.Height = 135;
@@ -41,12 +44,20 @@ namespace Reservas_Vuelo {
         }
 
         private void btnVerDestino_Click(object sender, EventArgs e) {
+            var destinos = (from v in datacontext.Vuelos
+                                     where v.Origen == cmbOrigen.Text
+                                     select v.Origen);
+            cmbDestino.Items.AddRange(destinos.ToArray());
             SlideTo(230);
             cmbOrigen.Enabled = false;
         }
 
         private void SeleccionVuelo_Load(object sender, EventArgs e) {
 
+            List<string> origenes = (from v in datacontext.Vuelos
+                            select v.Origen).Distinct().ToList();
+            cmbOrigen.Items.AddRange(origenes.ToArray());
+            
         }
 
         private void btnReservar_Click(object sender, EventArgs e) {
