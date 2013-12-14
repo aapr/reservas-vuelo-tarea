@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteReservaAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClienteReservaAdmin.Designer.cs">
+      <DependentUpon>ClienteReservaAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="SeleccionAsiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VentaInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentaInfo.Designer.cs">
+      <DependentUpon>VentaInfo.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClienteReservaAdmin.resx">
+      <DependentUpon>ClienteReservaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeleccionAsiento.resx">
       <DependentUpon>SeleccionAsiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +89,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VentaInfo.resx">
+      <DependentUpon>VentaInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
