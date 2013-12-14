@@ -8,8 +8,8 @@ namespace Reservas_Vuelo.DataLayer
 {
     public static class Comun
     {
-        //public static DataLayerDataContext datacontext = new DataLayerDataContext();
-
+        public static DataLayerDataContext datacontext = new DataLayerDataContext();
+       
 
     }
 
