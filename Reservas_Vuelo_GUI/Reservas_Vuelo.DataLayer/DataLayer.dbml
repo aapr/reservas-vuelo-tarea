@@ -19,7 +19,6 @@
       <Association Name="Asiento_Viaje_Asientos_Venta" Member="Asientos_Ventas" ThisKey="Id" OtherKey="Id_Asientos_Viaje" Type="Asientos_Venta" />
       <Association Name="Asiento_Avion_Asiento_Viaje" Member="Asiento_Avion" ThisKey="Id_Asiento_Avion" OtherKey="Id" Type="Asiento_Avion" IsForeignKey="true" />
       <Association Name="Avion_Asiento_Viaje" Member="Avion" ThisKey="Id_Avion" OtherKey="Id" Type="Avion" IsForeignKey="true" />
-      <Association Name="Viaje_Asiento_Viaje" Member="Viaje" ThisKey="Id_Viaje" OtherKey="Id" Type="Viaje" IsForeignKey="true" />
       <Association Name="Vuelo_Asiento_Viaje" Member="Vuelo" ThisKey="Id_Vuelo" OtherKey="Id" Type="Vuelo" IsForeignKey="true" />
     </Type>
   </Table>
@@ -44,6 +43,7 @@
     <Type Name="Ciudad">
       <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Codigo" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Venta" Member="Ventas">
@@ -58,15 +58,6 @@
       <Association Name="Venta_Asientos_Venta" Member="Asientos_Ventas" ThisKey="Id" OtherKey="Id_Ventas" Type="Asientos_Venta" />
     </Type>
   </Table>
-  <Table Name="dbo.Viaje" Member="Viajes">
-    <Type Name="Viaje">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Id_Vuelo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Association Name="Viaje_Asiento_Viaje" Member="Asiento_Viajes" ThisKey="Id" OtherKey="Id_Viaje" Type="Asiento_Viaje" />
-      <Association Name="Vuelo_Viaje" Member="Vuelo" ThisKey="Id_Vuelo" OtherKey="Id" Type="Vuelo" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Vuelo" Member="Vuelos">
     <Type Name="Vuelo">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -76,7 +67,6 @@
       <Column Name="Hora_Llegada" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Id_Avion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Vuelo_Asiento_Viaje" Member="Asiento_Viajes" ThisKey="Id" OtherKey="Id_Vuelo" Type="Asiento_Viaje" />
-      <Association Name="Vuelo_Viaje" Member="Viajes" ThisKey="Id" OtherKey="Id_Vuelo" Type="Viaje" />
       <Association Name="Avion_Vuelo" Member="Avion" ThisKey="Id_Avion" OtherKey="Id" Type="Avion" IsForeignKey="true" />
     </Type>
   </Table>

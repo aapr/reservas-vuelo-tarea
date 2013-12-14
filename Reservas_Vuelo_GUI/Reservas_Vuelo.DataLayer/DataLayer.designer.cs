@@ -39,12 +39,12 @@ namespace Reservas_Vuelo.DataLayer
     partial void InsertAvion(Avion instance);
     partial void UpdateAvion(Avion instance);
     partial void DeleteAvion(Avion instance);
+    partial void InsertCiudad(Ciudad instance);
+    partial void UpdateCiudad(Ciudad instance);
+    partial void DeleteCiudad(Ciudad instance);
     partial void InsertVenta(Venta instance);
     partial void UpdateVenta(Venta instance);
     partial void DeleteVenta(Venta instance);
-    partial void InsertViaje(Viaje instance);
-    partial void UpdateViaje(Viaje instance);
-    partial void DeleteViaje(Viaje instance);
     partial void InsertVuelo(Vuelo instance);
     partial void UpdateVuelo(Vuelo instance);
     partial void DeleteVuelo(Vuelo instance);
@@ -125,14 +125,6 @@ namespace Reservas_Vuelo.DataLayer
 			get
 			{
 				return this.GetTable<Venta>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Viaje> Viajes
-		{
-			get
-			{
-				return this.GetTable<Viaje>();
 			}
 		}
 		
@@ -344,8 +336,6 @@ namespace Reservas_Vuelo.DataLayer
 		
 		private EntityRef<Avion> _Avion;
 		
-		private EntityRef<Viaje> _Viaje;
-		
 		private EntityRef<Vuelo> _Vuelo;
 		
     #region Extensibility Method Definitions
@@ -368,7 +358,6 @@ namespace Reservas_Vuelo.DataLayer
 		{
 			this._Asiento_Avion = default(EntityRef<Asiento_Avion>);
 			this._Avion = default(EntityRef<Avion>);
-			this._Viaje = default(EntityRef<Viaje>);
 			this._Vuelo = default(EntityRef<Vuelo>);
 			OnCreated();
 		}
@@ -404,10 +393,6 @@ namespace Reservas_Vuelo.DataLayer
 			{
 				if ((this._Id_Viaje != value))
 				{
-					if (this._Viaje.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnId_ViajeChanging(value);
 					this.SendPropertyChanging();
 					this._Id_Viaje = value;
@@ -553,40 +538,6 @@ namespace Reservas_Vuelo.DataLayer
 						this._Id_Avion = default(int);
 					}
 					this.SendPropertyChanged("Avion");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Viaje_Asiento_Viaje", Storage="_Viaje", ThisKey="Id_Viaje", OtherKey="Id", IsForeignKey=true)]
-		public Viaje Viaje
-		{
-			get
-			{
-				return this._Viaje.Entity;
-			}
-			set
-			{
-				Viaje previousValue = this._Viaje.Entity;
-				if (((previousValue != value) 
-							|| (this._Viaje.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Viaje.Entity = null;
-						previousValue.Asiento_Viajes.Remove(this);
-					}
-					this._Viaje.Entity = value;
-					if ((value != null))
-					{
-						value.Asiento_Viajes.Add(this);
-						this._Id_Viaje = value.Id;
-					}
-					else
-					{
-						this._Id_Viaje = default(int);
-					}
-					this.SendPropertyChanged("Viaje");
 				}
 			}
 		}
@@ -862,15 +813,32 @@ namespace Reservas_Vuelo.DataLayer
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Ciudad")]
-	public partial class Ciudad
+	public partial class Ciudad : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _Nombre;
 		
 		private string _Codigo;
 		
+		private int _Id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNombreChanging(string value);
+    partial void OnNombreChanged();
+    partial void OnCodigoChanging(string value);
+    partial void OnCodigoChanged();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    #endregion
+		
 		public Ciudad()
 		{
+			OnCreated();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
@@ -884,7 +852,11 @@ namespace Reservas_Vuelo.DataLayer
 			{
 				if ((this._Nombre != value))
 				{
+					this.OnNombreChanging(value);
+					this.SendPropertyChanging();
 					this._Nombre = value;
+					this.SendPropertyChanged("Nombre");
+					this.OnNombreChanged();
 				}
 			}
 		}
@@ -900,8 +872,52 @@ namespace Reservas_Vuelo.DataLayer
 			{
 				if ((this._Codigo != value))
 				{
+					this.OnCodigoChanging(value);
+					this.SendPropertyChanging();
 					this._Codigo = value;
+					this.SendPropertyChanged("Codigo");
+					this.OnCodigoChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1112,185 +1128,6 @@ namespace Reservas_Vuelo.DataLayer
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Viaje")]
-	public partial class Viaje : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _Id_Vuelo;
-		
-		private System.DateTime _Fecha;
-		
-		private EntitySet<Asiento_Viaje> _Asiento_Viajes;
-		
-		private EntityRef<Vuelo> _Vuelo;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnId_VueloChanging(int value);
-    partial void OnId_VueloChanged();
-    partial void OnFechaChanging(System.DateTime value);
-    partial void OnFechaChanged();
-    #endregion
-		
-		public Viaje()
-		{
-			this._Asiento_Viajes = new EntitySet<Asiento_Viaje>(new Action<Asiento_Viaje>(this.attach_Asiento_Viajes), new Action<Asiento_Viaje>(this.detach_Asiento_Viajes));
-			this._Vuelo = default(EntityRef<Vuelo>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Vuelo", DbType="Int NOT NULL")]
-		public int Id_Vuelo
-		{
-			get
-			{
-				return this._Id_Vuelo;
-			}
-			set
-			{
-				if ((this._Id_Vuelo != value))
-				{
-					if (this._Vuelo.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnId_VueloChanging(value);
-					this.SendPropertyChanging();
-					this._Id_Vuelo = value;
-					this.SendPropertyChanged("Id_Vuelo");
-					this.OnId_VueloChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha", DbType="Date NOT NULL")]
-		public System.DateTime Fecha
-		{
-			get
-			{
-				return this._Fecha;
-			}
-			set
-			{
-				if ((this._Fecha != value))
-				{
-					this.OnFechaChanging(value);
-					this.SendPropertyChanging();
-					this._Fecha = value;
-					this.SendPropertyChanged("Fecha");
-					this.OnFechaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Viaje_Asiento_Viaje", Storage="_Asiento_Viajes", ThisKey="Id", OtherKey="Id_Viaje")]
-		public EntitySet<Asiento_Viaje> Asiento_Viajes
-		{
-			get
-			{
-				return this._Asiento_Viajes;
-			}
-			set
-			{
-				this._Asiento_Viajes.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Vuelo_Viaje", Storage="_Vuelo", ThisKey="Id_Vuelo", OtherKey="Id", IsForeignKey=true)]
-		public Vuelo Vuelo
-		{
-			get
-			{
-				return this._Vuelo.Entity;
-			}
-			set
-			{
-				Vuelo previousValue = this._Vuelo.Entity;
-				if (((previousValue != value) 
-							|| (this._Vuelo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Vuelo.Entity = null;
-						previousValue.Viajes.Remove(this);
-					}
-					this._Vuelo.Entity = value;
-					if ((value != null))
-					{
-						value.Viajes.Add(this);
-						this._Id_Vuelo = value.Id;
-					}
-					else
-					{
-						this._Id_Vuelo = default(int);
-					}
-					this.SendPropertyChanged("Vuelo");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Asiento_Viajes(Asiento_Viaje entity)
-		{
-			this.SendPropertyChanging();
-			entity.Viaje = this;
-		}
-		
-		private void detach_Asiento_Viajes(Asiento_Viaje entity)
-		{
-			this.SendPropertyChanging();
-			entity.Viaje = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Vuelo")]
 	public partial class Vuelo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1310,8 +1147,6 @@ namespace Reservas_Vuelo.DataLayer
 		private int _Id_Avion;
 		
 		private EntitySet<Asiento_Viaje> _Asiento_Viajes;
-		
-		private EntitySet<Viaje> _Viajes;
 		
 		private EntityRef<Avion> _Avion;
 		
@@ -1336,7 +1171,6 @@ namespace Reservas_Vuelo.DataLayer
 		public Vuelo()
 		{
 			this._Asiento_Viajes = new EntitySet<Asiento_Viaje>(new Action<Asiento_Viaje>(this.attach_Asiento_Viajes), new Action<Asiento_Viaje>(this.detach_Asiento_Viajes));
-			this._Viajes = new EntitySet<Viaje>(new Action<Viaje>(this.attach_Viajes), new Action<Viaje>(this.detach_Viajes));
 			this._Avion = default(EntityRef<Avion>);
 			OnCreated();
 		}
@@ -1478,19 +1312,6 @@ namespace Reservas_Vuelo.DataLayer
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Vuelo_Viaje", Storage="_Viajes", ThisKey="Id", OtherKey="Id_Vuelo")]
-		public EntitySet<Viaje> Viajes
-		{
-			get
-			{
-				return this._Viajes;
-			}
-			set
-			{
-				this._Viajes.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Avion_Vuelo", Storage="_Avion", ThisKey="Id_Avion", OtherKey="Id", IsForeignKey=true)]
 		public Avion Avion
 		{
@@ -1552,18 +1373,6 @@ namespace Reservas_Vuelo.DataLayer
 		}
 		
 		private void detach_Asiento_Viajes(Asiento_Viaje entity)
-		{
-			this.SendPropertyChanging();
-			entity.Vuelo = null;
-		}
-		
-		private void attach_Viajes(Viaje entity)
-		{
-			this.SendPropertyChanging();
-			entity.Vuelo = this;
-		}
-		
-		private void detach_Viajes(Viaje entity)
 		{
 			this.SendPropertyChanging();
 			entity.Vuelo = null;

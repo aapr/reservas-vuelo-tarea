@@ -56,9 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comun.cs" />
-    <Compile Include="DataLayer.cs">
-      <DependentUpon>DataLayer.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DataLayer.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,10 +67,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ReservasDataSet.Designer.cs">
+    <Compile Include="Reservas_VueloDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ReservasDataSet.xsd</DependentUpon>
+      <DependentUpon>Reservas_VueloDataSet.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -94,15 +91,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Reservas_Vuelo.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Reservas_Vuelo_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Reservas_Vuelo.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="DataLayer.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -113,20 +101,29 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ReservasDataSet.xsc">
-      <DependentUpon>ReservasDataSet.xsd</DependentUpon>
+    <None Include="Reservas_VueloDataSet.xsc">
+      <DependentUpon>Reservas_VueloDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ReservasDataSet.xsd">
+    <None Include="Reservas_VueloDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ReservasDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>Reservas_VueloDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ReservasDataSet.xss">
-      <DependentUpon>ReservasDataSet.xsd</DependentUpon>
+    <None Include="Reservas_VueloDataSet.xss">
+      <DependentUpon>Reservas_VueloDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reservas_Vuelo.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reservas_Vuelo_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Reservas_Vuelo.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="DataLayer.dbml.layout">

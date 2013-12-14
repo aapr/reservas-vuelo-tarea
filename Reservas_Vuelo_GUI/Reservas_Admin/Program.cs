@@ -12,21 +12,33 @@ namespace Reservas_Admin
     {
         
 
-        public void AgregarCiudad()
+        public static void AgregarCiudad()
         {
-            string nombre = string.Empty;
-            string codigo= string.Empty;
 
+            DataLayerDataContext dataContext = new DataLayerDataContext();
             Ciudad ciudad = new Ciudad();
             
             Console.WriteLine("Nombre de la ciudad:");
-            ciudad.Nombre = Console.ReadLine();
+
+            string nombre= Console.ReadLine();
             Console.WriteLine("Nombre de la ciudad:");
-            ciudad.Codigo = Console.ReadLine();
+            string codigo= Console.ReadLine();
+
+            ciudad.Nombre  = nombre;
+            ciudad.Codigo = codigo;
+
+            dataContext.Ciudads.InsertOnSubmit(ciudad);
+            dataContext.SubmitChanges();
+            
+            
         }
 
         static void Main(string[] args)
         {
+
+            Console.WriteLine("VAMOS A AGREGAR UNA CIUDAD");
+            AgregarCiudad();
+
         }
     }
 }
