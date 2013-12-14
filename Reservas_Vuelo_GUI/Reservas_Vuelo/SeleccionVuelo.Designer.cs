@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnVerDestino = new System.Windows.Forms.Button();
             this.cmbOrigen = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -39,7 +40,6 @@
             this.btnVerFecha = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSlideOrigen = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -56,6 +56,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Origen";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(181, 30);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(34, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "<";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnVerDestino
             // 
@@ -154,23 +163,15 @@
             this.btnSlideOrigen.UseVisualStyleBackColor = true;
             this.btnSlideOrigen.Click += new System.EventHandler(this.btnSlideOrigen_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(181, 30);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(34, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "<";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // SeleccionVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 97);
+            this.ClientSize = new System.Drawing.Size(338, 351);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "SeleccionVuelo";
             this.Text = "Reserva de Vuelo";
             this.Load += new System.EventHandler(this.SeleccionVuelo_Load);

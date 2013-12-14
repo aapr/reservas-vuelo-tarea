@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtExpiracion = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -183,15 +183,15 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Fecha Expiración";
             // 
-            // dateTimePicker1
+            // dtExpiracion
             // 
-            this.dateTimePicker1.CustomFormat = "MM/yy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(98, 124);
-            this.dateTimePicker1.MinDate = new System.DateTime(2013, 12, 12, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 20);
-            this.dateTimePicker1.TabIndex = 17;
+            this.dtExpiracion.CustomFormat = "MM/yy";
+            this.dtExpiracion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtExpiracion.Location = new System.Drawing.Point(149, 124);
+            this.dtExpiracion.MinDate = new System.DateTime(2013, 12, 12, 0, 0, 0, 0);
+            this.dtExpiracion.Name = "dtExpiracion";
+            this.dtExpiracion.Size = new System.Drawing.Size(49, 20);
+            this.dtExpiracion.TabIndex = 17;
             // 
             // label6
             // 
@@ -213,7 +213,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtExpiracion);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.label5);
@@ -247,6 +247,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "SeleccionAsiento";
             this.Text = "Detalle de Reserva";
+            this.Load += new System.EventHandler(this.SeleccionAsiento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -273,7 +274,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtExpiracion;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox1;

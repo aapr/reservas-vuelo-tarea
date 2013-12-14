@@ -15,6 +15,7 @@ namespace Reservas_Vuelo
         public SeleccionVuelo()
         {
             InitializeComponent();
+            this.Height = 135;
         }
 
         private void btnVerFecha_Click(object sender, EventArgs e) {

@@ -13,5 +13,9 @@ namespace Reservas_Vuelo {
         public SeleccionAsiento() {
             InitializeComponent();
         }
+
+        private void SeleccionAsiento_Load(object sender, EventArgs e) {
+            dtExpiracion.MinDate = DateTime.Today;
+        }
     }
 }
