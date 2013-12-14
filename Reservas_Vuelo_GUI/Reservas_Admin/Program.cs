@@ -25,6 +25,8 @@ namespace Reservas_Admin
             ciudad.Codigo = Console.ReadLine();
         }
 
-
+        static void Main(string[] args)
+        {
+        }
     }
 }
