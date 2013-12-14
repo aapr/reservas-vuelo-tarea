@@ -1851,12 +1851,12 @@ namespace Reservas_Vuelo.DataLayer {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CiudadRow AddCiudadRow(string Nombre, string Codigo, int Id) {
+            public CiudadRow AddCiudadRow(string Nombre, string Codigo) {
                 CiudadRow rowCiudadRow = ((CiudadRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Nombre,
                         Codigo,
-                        Id};
+                        null};
                 rowCiudadRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCiudadRow);
                 return rowCiudadRow;
@@ -1906,7 +1906,11 @@ namespace Reservas_Vuelo.DataLayer {
                 this.columnNombre.MaxLength = 50;
                 this.columnCodigo.AllowDBNull = false;
                 this.columnCodigo.MaxLength = 3;
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
             }
             
@@ -5315,24 +5319,23 @@ SELECT Id, Id_Viaje, Id_Asiento_Avion, Id_Vuelo, Id_Avion FROM Asiento_Viaje WHE
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Ciudad] ([Nombre], [Codigo], [Id]) VALUES (@Nombre, @Codigo, @" +
-                "Id);\r\nSELECT Nombre, Codigo, Id FROM Ciudad WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Ciudad] ([Nombre], [Codigo]) VALUES (@Nombre, @Codigo);\r\nSELEC" +
+                "T Nombre, Codigo, Id FROM Ciudad WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Ciudad] SET [Nombre] = @Nombre, [Codigo] = @Codigo, [Id] = @Id WHER" +
-                "E (([Nombre] = @Original_Nombre) AND ([Codigo] = @Original_Codigo) AND ([Id] = @" +
-                "Original_Id));\r\nSELECT Nombre, Codigo, Id FROM Ciudad WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Ciudad] SET [Nombre] = @Nombre, [Codigo] = @Codigo WHERE (([Nombre]" +
+                " = @Original_Nombre) AND ([Codigo] = @Original_Codigo) AND ([Id] = @Original_Id)" +
+                ");\r\nSELECT Nombre, Codigo, Id FROM Ciudad WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nombre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nombre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Codigo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5443,7 +5446,7 @@ SELECT Id, Id_Viaje, Id_Asiento_Avion, Id_Vuelo, Id_Avion FROM Asiento_Viaje WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Nombre, string Codigo, int Id) {
+        public virtual int Insert(string Nombre, string Codigo) {
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -5456,7 +5459,6 @@ SELECT Id, Id_Viaje, Id_Asiento_Avion, Id_Vuelo, Id_Avion FROM Asiento_Viaje WHE
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Codigo));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5477,7 +5479,7 @@ SELECT Id, Id_Viaje, Id_Asiento_Avion, Id_Vuelo, Id_Avion FROM Asiento_Viaje WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nombre, string Codigo, int Id, string Original_Nombre, string Original_Codigo, int Original_Id) {
+        public virtual int Update(string Nombre, string Codigo, string Original_Nombre, string Original_Codigo, int Original_Id, int Id) {
             if ((Nombre == null)) {
                 throw new global::System.ArgumentNullException("Nombre");
             }
@@ -5490,20 +5492,20 @@ SELECT Id, Id_Viaje, Id_Asiento_Avion, Id_Vuelo, Id_Avion FROM Asiento_Viaje WHE
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Codigo));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Id));
             if ((Original_Nombre == null)) {
                 throw new global::System.ArgumentNullException("Original_Nombre");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Nombre));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Nombre));
             }
             if ((Original_Codigo == null)) {
                 throw new global::System.ArgumentNullException("Original_Codigo");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Codigo));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Codigo));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5525,7 +5527,7 @@ SELECT Id, Id_Viaje, Id_Asiento_Avion, Id_Vuelo, Id_Avion FROM Asiento_Viaje WHE
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Nombre, string Codigo, string Original_Nombre, string Original_Codigo, int Original_Id) {
-            return this.Update(Nombre, Codigo, Original_Id, Original_Nombre, Original_Codigo, Original_Id);
+            return this.Update(Nombre, Codigo, Original_Nombre, Original_Codigo, Original_Id, Original_Id);
         }
     }
     

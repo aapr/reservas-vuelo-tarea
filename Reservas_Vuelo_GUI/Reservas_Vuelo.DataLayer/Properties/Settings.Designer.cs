@@ -33,5 +33,16 @@ namespace Reservas_Vuelo.DataLayer.Properties {
                 return ((string)(this["Reservas_VueloConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=FLORROCHA-VAIO;Initial Catalog=Reservas_Vuelo;Integrated Security=Tru" +
+            "e")]
+        public string Reservas_VueloConnectionString1 {
+            get {
+                return ((string)(this["Reservas_VueloConnectionString1"]));
+            }
+        }
     }
 }
