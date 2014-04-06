@@ -17,14 +17,14 @@ namespace Reservas_Admin
 
         static void Main(string[] args)
         {
-            //#region prueba de agregado de ciudad
+            #region prueba de agregado de ciudad
             //AgregarCiudad c = new AgregarCiudad();
  
             //Console.WriteLine("==============================");    
             //Console.WriteLine("===LLENANDO LA TABLA CIUDAD===");
             //Console.WriteLine("==============================");
             //c.agregarCiudad();
-            // #endregion
+            #endregion
 
             AvionManager am = new AvionManager();
 
@@ -50,11 +50,11 @@ namespace Reservas_Admin
             #endregion
 
             #region Eliminar Avion
-            Console.WriteLine("==============================");
-            Console.WriteLine("=======ELIMINAR AVION=========");
-            Console.WriteLine("==============================");
+            //Console.WriteLine("==============================");
+            //Console.WriteLine("=======ELIMINAR AVION=========");
+            //Console.WriteLine("==============================");
 
-            am.eliminarAvion(1);
+            //am.eliminarAvion(1);
             
             #endregion
 
