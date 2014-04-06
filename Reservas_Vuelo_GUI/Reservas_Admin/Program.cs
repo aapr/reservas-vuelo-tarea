@@ -14,58 +14,56 @@ namespace Reservas_Admin
     class Program
     {
 
-        /// <summary>
-        /// Retorna el indice de la respuesta
-        /// </summary>
-        /// <param name="Preguntas"></param>
-        /// <returns></returns>
-         int GenerarPreguntas(string Pregunta, string[] Preguntas)
-        {
-            int respuesta = 0;
-            bool correct = false;
-            while (!correct)
-            {
-                Console.WriteLine(Pregunta);
-
-                for (int c = 0; c < Preguntas.Length; c++)
-                {
-                    Console.WriteLine((c + 1).ToString() + ")" + Preguntas[c]);
-                }
-
-                string respuestaTemportal = Console.ReadLine();
-
-                int.TryParse(respuestaTemportal, out respuesta);
-                if (respuesta >= 1 && respuesta <= Preguntas.Length)
-                {
-                    correct = true;
-                }
-                else
-                {
-                    Console.WriteLine("Opcion incorrecto. Intente nuevamente");
-                }
-            }
-
-            return respuesta;
-        }
 
         static void Main(string[] args)
         {
-            #region prueba de agregadod e ciudad
-            AgregarCiudad c = new AgregarCiudad();
+            //#region prueba de agregado de ciudad
+            //AgregarCiudad c = new AgregarCiudad();
  
-            Console.WriteLine("==============================");    
-            Console.WriteLine("===LLENANDO LA TABLA CIUDAD===");
-            Console.WriteLine("==============================");
-            c.agregarCiudad();
-             #endregion
+            //Console.WriteLine("==============================");    
+            //Console.WriteLine("===LLENANDO LA TABLA CIUDAD===");
+            //Console.WriteLine("==============================");
+            //c.agregarCiudad();
+            // #endregion
 
             AvionManager am = new AvionManager();
 
-            var lista = am.BuscarAvion();
-          
+            #region prueba de agregado de avion
+            //Console.WriteLine("==============================");
+            //Console.WriteLine("===LLENANDO LA TABLA AVION====");
+            //Console.WriteLine("==============================");
+            //am.agregarAvion();
+            #endregion
+
+            #region Listado Avion
+            //Console.WriteLine("==============================");
+            //Console.WriteLine("=======LISTA DE AVIONES=======");
+            //Console.WriteLine("==============================");
+            //var lista = am.buscarAvion();
+
+            //foreach( var c in lista){
+
+            //    Console.WriteLine("{0}", c.Descripcion);
+            //};
+
+            //Console.ReadLine();
+            #endregion
+
+            #region Eliminar Avion
+            Console.WriteLine("==============================");
+            Console.WriteLine("=======ELIMINAR AVION=========");
+            Console.WriteLine("==============================");
+
+            am.eliminarAvion(1);
+            
+            #endregion
+
+        }
+
+
             // Mostramos cruceros y viajes
               
 
         }
-    }
 }
+

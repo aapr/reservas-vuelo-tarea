@@ -46,7 +46,7 @@
   </Table>
   <Table Name="dbo.Avion" Member="Avions">
     <Type Name="Avion">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Descripcion" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
       <Association Name="Avion_Asiento_Avion" Member="Asiento_Avions" ThisKey="Id" OtherKey="Id_Avion" Type="Asiento_Avion" />
       <Association Name="Avion_Vuelo" Member="Vuelos" ThisKey="Id" OtherKey="Id_Avion" Type="Vuelo" />

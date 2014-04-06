@@ -10,29 +10,31 @@ namespace Reservas_Admin
     class AvionManager
     {
         DataLayerDataContext datacontext = new DataLayerDataContext();
-        public List<Avion> BuscarAvion()
-        {
 
-            var data = from a in datacontext.Avions
-                       select new Avion
-                       {
-                           Id = a.Id,
-                           Descripcion = a.Descripcion
-                       };
 
-            return data.ToList();
-        }
+        //public List<Avion> BuscarAvion()
+        //{
+
+        //    var data = from a in datacontext.Avions
+        //               select new Avion
+        //               {
+        //                   Id = a.Id,
+        //                   Descripcion = a.Descripcion
+        //               };
+
+        //    return data.ToList();
+        //}
 
         Avion avion = new Avion();
-
+       
 
         public void agregarAvion()
         {
 
             if (avion != null)
             {
-                //Codigo Ciudad
-                Console.WriteLine("Escriba una breve descripcion del avion:");
+                //nombre avion
+                Console.WriteLine("Escriba el nombre del avion:");
                 avion.Descripcion = Console.ReadLine();
 
                 datacontext.Avions.InsertOnSubmit(avion);
@@ -51,7 +53,26 @@ namespace Reservas_Admin
             }
         }
 
+        public List<Avion> buscarAvion()
+        {
 
-        public void eliminarAvion() { }
+            var v = datacontext.Avions.ToList();
+
+            var data = v.Select(q => new Avion
+            {
+                Descripcion = q.Descripcion
+            }).ToList();
+
+            return data;
+        }
+
+        public void eliminarAvion(int i) {
+
+            Avion a = datacontext.Avions.FirstOrDefault(q => q.Id == i);
+
+            datacontext.Avions.DeleteOnSubmit(a);
+            datacontext.SubmitChanges();
+        }
+
     }
 }

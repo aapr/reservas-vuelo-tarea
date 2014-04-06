@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 9.875" name="DataLayer">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 8.5" name="DataLayer">
   <DataContextMoniker Name="/DataLayerDataContext" />
   <nestedChildShapes>
-    <classShape Id="c47ccf70-346a-4f5a-a102-1e94f1066321" absoluteBounds="3.5, 2.75, 2, 1.3862939453125">
+    <classShape Id="c47ccf70-346a-4f5a-a102-1e94f1066321" absoluteBounds="3.75, 1.5, 2, 1.3862939453125">
       <DataClassMoniker Name="/DataLayerDataContext/Asiento_Avion" />
       <nestedChildShapes>
-        <elementListCompartment Id="3a080180-9f21-4dec-acf1-798b26430401" absoluteBounds="3.515, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3a080180-9f21-4dec-acf1-798b26430401" absoluteBounds="3.765, 1.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="9fc97afc-4e8a-4848-864b-07dac2af8a72" absoluteBounds="3.5, 4.875, 2, 1.9631982421875005">
@@ -32,10 +32,10 @@
         <elementListCompartment Id="c222f752-25fc-4ea9-a22f-86f047be3c1c" absoluteBounds="0.765, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="be8e88e1-9300-404d-976a-18bf35193724" absoluteBounds="0.75, 8.25, 2, 1.3862939453125005">
+    <classShape Id="be8e88e1-9300-404d-976a-18bf35193724" absoluteBounds="0.75, 6.375, 2, 1.3862939453125005">
       <DataClassMoniker Name="/DataLayerDataContext/Ciudad" />
       <nestedChildShapes>
-        <elementListCompartment Id="2669679e-b4d8-4591-9624-ec4e51c27d75" absoluteBounds="0.765, 8.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2669679e-b4d8-4591-9624-ec4e51c27d75" absoluteBounds="0.765, 6.8350000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="62fbe703-4bfc-46b7-98a5-586e29aab029" absoluteBounds="9, 0.75, 2, 2.1554996744791666">
@@ -50,63 +50,63 @@
         <elementListCompartment Id="c8fa064c-96f2-43f9-95da-bf75b1af0934" absoluteBounds="6.265, 5.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 4.1362939453125); (5.875 : 4.5112939453125); (5.875 : 3.625); (8.625 : 3.625); (9 : 4)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.65625 : 2.8862939453125); (5.65625 : 4.2343725); (9 : 4.2343725)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataLayerDataContext/Asiento_Avion/Asiento_Avion_Asiento_Viaje" />
       <nodes>
         <classShapeMoniker Id="c47ccf70-346a-4f5a-a102-1e94f1066321" />
         <classShapeMoniker Id="e88ce3a3-bc25-4eb4-b900-9bd8c3dc6e85" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 5.03125); (9 : 5.03125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 5.03125); (9 : 5.03125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataLayerDataContext/Vuelo/Vuelo_Asiento_Viaje" />
       <nodes>
         <classShapeMoniker Id="9fc97afc-4e8a-4848-864b-07dac2af8a72" />
         <classShapeMoniker Id="e88ce3a3-bc25-4eb4-b900-9bd8c3dc6e85" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11 : 4.84699625651042); (11.75 : 4.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11 : 4.84699625651042); (11.75 : 4.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataLayerDataContext/Asiento_Viaje/Asiento_Viaje_Asientos_Venta" />
       <nodes>
         <classShapeMoniker Id="e88ce3a3-bc25-4eb4-b900-9bd8c3dc6e85" />
         <classShapeMoniker Id="9ba50d3c-4392-49f9-b9bd-64f495088241" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 4.25); (1.75 : 3.44314697265625); (3.5 : 3.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 4.25); (1.75 : 2.19314697265625); (3.75 : 2.19314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataLayerDataContext/Avion/Avion_Asiento_Avion" />
       <nodes>
         <classShapeMoniker Id="8a517751-d923-4848-86a9-425276dae0ad" />
         <classShapeMoniker Id="c47ccf70-346a-4f5a-a102-1e94f1066321" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.15949625651042); (3.5 : 5.15949625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.15949625651042); (3.5 : 5.15949625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataLayerDataContext/Avion/Avion_Vuelo" />
       <nodes>
         <classShapeMoniker Id="8a517751-d923-4848-86a9-425276dae0ad" />
         <classShapeMoniker Id="9fc97afc-4e8a-4848-864b-07dac2af8a72" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.53125); (9 : 4.53125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.53125); (9 : 4.53125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataLayerDataContext/Avion/Avion_Asiento_Viaje" />
       <nodes>
         <classShapeMoniker Id="8a517751-d923-4848-86a9-425276dae0ad" />
         <classShapeMoniker Id="e88ce3a3-bc25-4eb4-b900-9bd8c3dc6e85" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(11 : 1.82774983723958); (12.75 : 1.82774983723958); (12.75 : 4.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(11 : 1.82774983723958); (12.75 : 1.82774983723958); (12.75 : 4.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataLayerDataContext/Venta/Venta_Asientos_Venta" />
       <nodes>
         <classShapeMoniker Id="62fbe703-4bfc-46b7-98a5-586e29aab029" />
         <classShapeMoniker Id="9ba50d3c-4392-49f9-b9bd-64f495088241" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.25 : 5.51044840494792); (9 : 5.51044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.25 : 5.51044840494792); (9 : 5.51044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataLayerDataContext/Viaje/Viaje_Asiento_Viaje" />
       <nodes>
         <classShapeMoniker Id="b17f3f74-cd20-435b-91db-a0cda219fea4" />
         <classShapeMoniker Id="e88ce3a3-bc25-4eb4-b900-9bd8c3dc6e85" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 5.94314697265625); (6.25 : 5.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 5.94314697265625); (6.25 : 5.94314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataLayerDataContext/Vuelo/Vuelo_Viaje" />
       <nodes>
         <classShapeMoniker Id="9fc97afc-4e8a-4848-864b-07dac2af8a72" />
