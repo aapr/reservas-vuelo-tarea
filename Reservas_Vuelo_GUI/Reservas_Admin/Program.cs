@@ -18,7 +18,7 @@ namespace Reservas_Admin
         static void Main(string[] args)
         {
             #region prueba de agregado de ciudad
-            //AgregarCiudad c = new AgregarCiudad();
+            //CiudadManager c = new CiudadManager();
  
             //Console.WriteLine("==============================");    
             //Console.WriteLine("===LLENANDO LA TABLA CIUDAD===");
@@ -41,9 +41,10 @@ namespace Reservas_Admin
             //Console.WriteLine("==============================");
             //var lista = am.buscarAvion();
 
-            //foreach( var c in lista){
+            //foreach (var c in lista)
+            //{
 
-            //    Console.WriteLine("{0}", c.Descripcion);
+            //    Console.WriteLine("{0} + {1}", c.Id, c.Descripcion);
             //};
 
             //Console.ReadLine();
@@ -58,12 +59,10 @@ namespace Reservas_Admin
             
             #endregion
 
+        
+        
         }
 
-
-            // Mostramos cruceros y viajes
-              
-
-        }
+    }
 }
 

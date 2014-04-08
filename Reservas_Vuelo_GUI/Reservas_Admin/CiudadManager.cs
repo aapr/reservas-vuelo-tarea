@@ -7,7 +7,7 @@ using Reservas_Vuelo.DataLayer;
 
 namespace Reservas_Admin
 {
-    class AgregarCiudad
+    class CiudadManager
     {
         DataLayerDataContext datacontext = new DataLayerDataContext();
         Ciudad ciudad = new Ciudad();
@@ -39,8 +39,23 @@ namespace Reservas_Admin
             {
                 Console.WriteLine("Error: 000");
                 Console.ReadKey();
-
+                
             }
+        }
+
+        //Posiblemente no se utilize
+        public List<Ciudad> listarCiudad()
+        {
+
+            var v = datacontext.Ciudads.ToList();
+
+            var data = v.Select(q => new Ciudad
+            {
+                Nombre = q.Nombre,
+                Codigo = q.Codigo
+            }).ToList();
+
+            return data;
         }
 
     }

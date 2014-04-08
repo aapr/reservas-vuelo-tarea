@@ -11,20 +11,6 @@ namespace Reservas_Admin
     {
         DataLayerDataContext datacontext = new DataLayerDataContext();
 
-
-        //public List<Avion> BuscarAvion()
-        //{
-
-        //    var data = from a in datacontext.Avions
-        //               select new Avion
-        //               {
-        //                   Id = a.Id,
-        //                   Descripcion = a.Descripcion
-        //               };
-
-        //    return data.ToList();
-        //}
-
         Avion avion = new Avion();
        
 
@@ -53,13 +39,14 @@ namespace Reservas_Admin
             }
         }
 
-        public List<Avion> buscarAvion()
+        public List<Avion> mostrarAvion()
         {
 
             var v = datacontext.Avions.ToList();
 
             var data = v.Select(q => new Avion
             {
+                Id = q.Id,
                 Descripcion = q.Descripcion
             }).ToList();
 
@@ -72,6 +59,16 @@ namespace Reservas_Admin
 
             datacontext.Avions.DeleteOnSubmit(a);
             datacontext.SubmitChanges();
+        }
+
+        public void editarAvion(int i) {
+            Avion a = datacontext.Avions.FirstOrDefault(q => q.Id == i);
+
+            a.Descripcion = Console.ReadLine();
+
+            datacontext.Avions.InsertOnSubmit(avion);
+            datacontext.SubmitChanges();
+
         }
 
     }

@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarCiudad.cs" />
+    <Compile Include="CiudadManager.cs" />
     <Compile Include="AvionManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViajeManager.cs" />
+    <Compile Include="VueloManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
