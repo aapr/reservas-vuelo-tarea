@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Reservas_Admin
 {
-    class AvionManager
+    class AvionManager//faltan todas las validaciones
     {
         DataLayerDataContext datacontext = new DataLayerDataContext();
 
@@ -53,20 +53,13 @@ namespace Reservas_Admin
             return data;
         }
 
-        public void eliminarAvion(int i) {
-
-            Avion a = datacontext.Avions.FirstOrDefault(q => q.Id == i);
-
-            datacontext.Avions.DeleteOnSubmit(a);
-            datacontext.SubmitChanges();
-        }
 
         public void editarAvion(int i) {
             Avion a = datacontext.Avions.FirstOrDefault(q => q.Id == i);
 
             a.Descripcion = Console.ReadLine();
 
-            datacontext.Avions.InsertOnSubmit(avion);
+            datacontext.Avions.InsertOnSubmit(a);
             datacontext.SubmitChanges();
 
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Reservas_Vuelo.DataLayer;
 namespace Reservas_Admin
 {
-    class ViajeManager
+    class ViajeManager//faltan todas las validaciones
     {
         DataLayerDataContext datacontext = new DataLayerDataContext();
         Viaje viaje = new Viaje();
@@ -22,7 +22,7 @@ namespace Reservas_Admin
             };
 
             Console.WriteLine("Id del vuelo utilizado en este viaje");
-            int i;
+            int i;            
             string v = Console.ReadLine();
             i = Convert.ToInt32(v);
 
@@ -37,6 +37,36 @@ namespace Reservas_Admin
             datacontext.Viajes.InsertOnSubmit(viaje);
             datacontext.SubmitChanges();
 
+        }
+
+        public List<Viaje> mostrarViaje() {
+            var v = datacontext.Viajes.ToList();
+            var data = v.Select(q => new Viaje
+            {
+                Id = q.Id,
+                Id_Vuelo= q.Id_Vuelo,
+                Fecha = q.Fecha
+            }).ToList();
+
+            return data;
+        }
+
+        public void editarViaje(int i) { 
+
+            Viaje v = datacontext.Viajes.FirstOrDefault(q => q.Id == i);
+            
+
+            Console.WriteLine("Nuevo id_vuelo");
+            int x = Convert.ToInt32(Console.ReadLine());
+            Avion a = datacontext.Avions.FirstOrDefault(q => q.Id == x);
+            v.Id_Vuelo = a.Id;
+
+            Console.WriteLine("Escriba la nueva fecha del viaje:");
+            string date = Console.ReadLine();
+            viaje.Fecha = Convert.ToDateTime(date);
+
+            datacontext.Viajes.InsertOnSubmit(v);
+            datacontext.SubmitChanges();
         }
 
     }

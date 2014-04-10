@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asiento_Avion.cs" />
+    <Compile Include="Asiento_Venta.cs" />
+    <Compile Include="Asiento_Viaje.cs" />
     <Compile Include="SeleccionAsiento.cs">
       <SubType>Form</SubType>
     </Compile>

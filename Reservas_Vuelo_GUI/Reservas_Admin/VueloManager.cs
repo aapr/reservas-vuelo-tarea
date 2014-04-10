@@ -7,7 +7,7 @@ using Reservas_Vuelo.DataLayer;
 
 namespace Reservas_Admin
 {
-    class VueloManager
+    class VueloManager//faltan todas las validaciones
     {
         DataLayerDataContext datacontext = new DataLayerDataContext();
 
@@ -64,6 +64,6 @@ namespace Reservas_Admin
             return data;
         }
 
-        
+  
     }
 }
