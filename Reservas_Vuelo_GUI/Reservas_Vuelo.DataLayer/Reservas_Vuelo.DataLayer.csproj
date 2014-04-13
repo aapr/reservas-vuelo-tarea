@@ -59,10 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comun.cs" />
-    <Compile Include="DataLayer.designer.cs">
+    <Compile Include="DataClassesReservas.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataLayer.dbml</DependentUpon>
+      <DependentUpon>DataClassesReservas.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -95,9 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="DataLayer.dbml">
+    <None Include="DataClassesReservas.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataLayer.designer.cs</LastGenOutput>
+      <LastGenOutput>DataClassesReservas.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -129,8 +129,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataLayer.dbml.layout">
-      <DependentUpon>DataLayer.dbml</DependentUpon>
+    <None Include="DataClassesReservas.dbml.layout">
+      <DependentUpon>DataClassesReservas.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

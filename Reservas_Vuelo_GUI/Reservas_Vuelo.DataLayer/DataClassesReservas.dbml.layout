@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14, 9.625" name="DataClassesReservas">
+  <DataContextMoniker Name="/DataClassesReservasDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5b52dbe4-38b6-49e7-981b-daef4e3f0f2f" absoluteBounds="3.625, 1.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClassesReservasDataContext/ASIENTO_AVION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a946df7a-f46e-4c54-a869-2ebefda7ded5" absoluteBounds="3.64, 2.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="17f489f6-8578-4de7-809b-04a036735c12" absoluteBounds="3.5, 4.625, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/DataClassesReservasDataContext/VUELO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="79c9a406-24f2-4690-9e34-3d968423672c" absoluteBounds="3.515, 5.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbbedec3-57c7-4696-9b4a-769a6c612fa8" absoluteBounds="9, 3.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/DataClassesReservasDataContext/ASIENTO_VIAJE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bfb395fe-8dbe-41aa-9318-c40576930e3f" absoluteBounds="9.015, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e47b01b-8ebf-4672-8082-e671e5480f88" absoluteBounds="11.75, 4, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DataClassesReservasDataContext/ASIENTOS_VENTA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="15878164-d168-4572-9e61-030f3e7b2a4d" absoluteBounds="11.765, 4.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3e91ca44-4b4d-4f2b-a2b9-91605857619a" absoluteBounds="0.75, 4, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DataClassesReservasDataContext/AVION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e0e66d84-b693-4956-b201-49d0507892fb" absoluteBounds="0.765, 4.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d7174d83-c3ee-4dea-8086-0c2e2e1fac32" absoluteBounds="0.75, 8, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DataClassesReservasDataContext/CIUDAD" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5d533c06-6378-4858-99e2-690bf6a6db52" absoluteBounds="0.765, 8.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f03c2de6-10fd-4d33-953b-27f94d9e54b5" absoluteBounds="9, 0.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DataClassesReservasDataContext/VENTA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9632a3ae-369a-414e-b926-96041604168e" absoluteBounds="9.015, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2cb8148d-f086-4b8d-a8fb-712757f9b029" absoluteBounds="6.25, 5, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DataClassesReservasDataContext/VIAJE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2cc7fdba-2a01-4cdb-a520-031cb851a7ef" absoluteBounds="6.265, 5.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.59375 : 3.1362939453125); (5.59375 : 3.9843725); (9 : 3.9843725)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/ASIENTO_AVION/ASIENTO_AVION_ASIENTO_VIAJE" />
+      <nodes>
+        <classShapeMoniker Id="5b52dbe4-38b6-49e7-981b-daef4e3f0f2f" />
+        <classShapeMoniker Id="cbbedec3-57c7-4696-9b4a-769a6c612fa8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.78125); (9 : 4.78125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/VUELO/VUELO_ASIENTO_VIAJE" />
+      <nodes>
+        <classShapeMoniker Id="17f489f6-8578-4de7-809b-04a036735c12" />
+        <classShapeMoniker Id="cbbedec3-57c7-4696-9b4a-769a6c612fa8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 4.59699625651042); (11.75 : 4.59699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/ASIENTO_VIAJE/ASIENTO_VIAJE_ASIENTOS_VENTA" />
+      <nodes>
+        <classShapeMoniker Id="cbbedec3-57c7-4696-9b4a-769a6c612fa8" />
+        <classShapeMoniker Id="6e47b01b-8ebf-4672-8082-e671e5480f88" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 4); (1.75 : 2.44314697265625); (3.625 : 2.44314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/AVION/AVION_ASIENTO_AVION" />
+      <nodes>
+        <classShapeMoniker Id="3e91ca44-4b4d-4f2b-a2b9-91605857619a" />
+        <classShapeMoniker Id="5b52dbe4-38b6-49e7-981b-daef4e3f0f2f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.90949625651042); (3.5 : 4.90949625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/AVION/AVION_VUELO" />
+      <nodes>
+        <classShapeMoniker Id="3e91ca44-4b4d-4f2b-a2b9-91605857619a" />
+        <classShapeMoniker Id="17f489f6-8578-4de7-809b-04a036735c12" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.28125); (9 : 4.28125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/AVION/AVION_ASIENTO_VIAJE" />
+      <nodes>
+        <classShapeMoniker Id="3e91ca44-4b4d-4f2b-a2b9-91605857619a" />
+        <classShapeMoniker Id="cbbedec3-57c7-4696-9b4a-769a6c612fa8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 1.57774983723958); (12.75 : 1.57774983723958); (12.75 : 4)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/VENTA/VENTA_ASIENTOS_VENTA" />
+      <nodes>
+        <classShapeMoniker Id="f03c2de6-10fd-4d33-953b-27f94d9e54b5" />
+        <classShapeMoniker Id="6e47b01b-8ebf-4672-8082-e671e5480f88" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 5.26044840494792); (9 : 5.26044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/VIAJE/VIAJE_ASIENTO_VIAJE" />
+      <nodes>
+        <classShapeMoniker Id="2cb8148d-f086-4b8d-a8fb-712757f9b029" />
+        <classShapeMoniker Id="cbbedec3-57c7-4696-9b4a-769a6c612fa8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 5.69314697265625); (6.25 : 5.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesReservasDataContext/VUELO/VUELO_VIAJE" />
+      <nodes>
+        <classShapeMoniker Id="17f489f6-8578-4de7-809b-04a036735c12" />
+        <classShapeMoniker Id="2cb8148d-f086-4b8d-a8fb-712757f9b029" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

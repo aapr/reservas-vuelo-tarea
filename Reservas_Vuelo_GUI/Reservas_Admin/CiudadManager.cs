@@ -9,8 +9,8 @@ namespace Reservas_Admin
 {
     class CiudadManager
     {
-        DataLayerDataContext datacontext = new DataLayerDataContext();
-        Ciudad ciudad = new Ciudad();
+        DataClassesReservasDataContext datacontext = new DataClassesReservasDataContext();
+        CIUDAD ciudad = new CIUDAD();
 
         
         /// <summary>
@@ -22,12 +22,12 @@ namespace Reservas_Admin
             {
                 //Nombre Ciudad
                 Console.WriteLine("Nombre de la ciudad:");
-                ciudad.Nombre = Console.ReadLine();
+                ciudad.NOMBRE = Console.ReadLine();
                 //Codigo Ciudad
                 Console.WriteLine("Codigo de la ciudad:");
-                ciudad.Codigo = Console.ReadLine();
+                ciudad.CODIGO = Console.ReadLine();
 
-                datacontext.Ciudads.InsertOnSubmit(ciudad);
+                datacontext.CIUDADs.InsertOnSubmit(ciudad);
                 datacontext.SubmitChanges();
 
 
@@ -44,15 +44,15 @@ namespace Reservas_Admin
         }
 
         //Posiblemente no se utilize
-        public List<Ciudad> listarCiudad()
+        public List<CIUDAD> listarCiudad()
         {
 
-            var v = datacontext.Ciudads.ToList();
+            var v = datacontext.CIUDADs.ToList();
 
-            var data = v.Select(q => new Ciudad
+            var data = v.Select(q => new CIUDAD
             {
-                Nombre = q.Nombre,
-                Codigo = q.Codigo
+                NOMBRE = q.NOMBRE,
+                CODIGO = q.CODIGO
             }).ToList();
 
             return data;

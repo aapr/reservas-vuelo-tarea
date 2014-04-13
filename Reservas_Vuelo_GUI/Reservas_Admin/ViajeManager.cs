@@ -8,8 +8,8 @@ namespace Reservas_Admin
 {
     class ViajeManager//faltan todas las validaciones
     {
-        DataLayerDataContext datacontext = new DataLayerDataContext();
-        Viaje viaje = new Viaje();
+        DataClassesReservasDataContext datacontext = new DataClassesReservasDataContext();
+        VIAJE viaje = new VIAJE();
         VueloManager vueloM = new VueloManager();
 
         public void agregarViaje() {
@@ -26,26 +26,26 @@ namespace Reservas_Admin
             string v = Console.ReadLine();
             i = Convert.ToInt32(v);
 
-            Vuelo a = datacontext.Vuelos.FirstOrDefault(q => q.Id == i);
+            VUELO a = datacontext.VUELOs.FirstOrDefault(q => q.ID == i);
 
-            viaje.Id_Vuelo = a.Id;
+            viaje.ID_VUELO= a.ID;
 
             Console.WriteLine("Escriba la fecha del viaje:");
             string date = Console.ReadLine();
-            viaje.Fecha = Convert.ToDateTime(date);
+            viaje.FECHA = Convert.ToDateTime(date);
 
-            datacontext.Viajes.InsertOnSubmit(viaje);
+            datacontext.VIAJEs.InsertOnSubmit(viaje);
             datacontext.SubmitChanges();
 
         }
 
-        public List<Viaje> mostrarViaje() {
-            var v = datacontext.Viajes.ToList();
-            var data = v.Select(q => new Viaje
+        public List<VIAJE> mostrarViaje() {
+            var v = datacontext.VIAJEs.ToList();
+            var data = v.Select(q => new VIAJE
             {
-                Id = q.Id,
-                Id_Vuelo= q.Id_Vuelo,
-                Fecha = q.Fecha
+                ID = q.ID,
+                ID_VUELO= q.ID_VUELO,
+                FECHA = q.FECHA
             }).ToList();
 
             return data;
@@ -53,19 +53,19 @@ namespace Reservas_Admin
 
         public void editarViaje(int i) { 
 
-            Viaje v = datacontext.Viajes.FirstOrDefault(q => q.Id == i);
+            VIAJE v = datacontext.VIAJEs.FirstOrDefault(q => q.Id == i);
             
 
             Console.WriteLine("Nuevo id_vuelo");
             int x = Convert.ToInt32(Console.ReadLine());
-            Avion a = datacontext.Avions.FirstOrDefault(q => q.Id == x);
-            v.Id_Vuelo = a.Id;
+            AVION a = datacontext.AVIONs.FirstOrDefault(q => q.Id == x);
+            v.ID_VUELO = a.Id;
 
             Console.WriteLine("Escriba la nueva fecha del viaje:");
             string date = Console.ReadLine();
-            viaje.Fecha = Convert.ToDateTime(date);
+            viaje.FECHA = Convert.ToDateTime(date);
 
-            datacontext.Viajes.InsertOnSubmit(v);
+            datacontext.VIAJEs.InsertOnSubmit(v);
             datacontext.SubmitChanges();
         }
 

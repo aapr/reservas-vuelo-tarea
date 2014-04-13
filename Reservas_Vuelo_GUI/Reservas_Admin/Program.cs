@@ -26,7 +26,7 @@ namespace Reservas_Admin
             //c.agregarCiudad();
             #endregion
 
-            AvionManager am = new AvionManager();
+            AvionManager am =  AvionManager.Instance;
 
             #region prueba de agregado de avion
             //Console.WriteLine("==============================");

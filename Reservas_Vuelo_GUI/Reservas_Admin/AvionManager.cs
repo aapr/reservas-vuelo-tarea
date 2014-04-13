@@ -9,11 +9,25 @@ namespace Reservas_Admin
 {
     class AvionManager//faltan todas las validaciones
     {
-        DataLayerDataContext datacontext = new DataLayerDataContext();
+        DataClassesReservasDataContext datacontext = new DataClassesReservasDataContext();
 
-        Avion avion = new Avion();
-       
+        AVION avion = new AVION();
 
+        private static AvionManager instance;
+
+        private AvionManager() { }
+
+        public static AvionManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AvionManager();
+                }
+                return instance;
+            }
+        }
         public void agregarAvion()
         {
 
@@ -21,9 +35,9 @@ namespace Reservas_Admin
             {
                 //nombre avion
                 Console.WriteLine("Escriba el nombre del avion:");
-                avion.Descripcion = Console.ReadLine();
+                avion.DESCRIPCION = Console.ReadLine();
 
-                datacontext.Avions.InsertOnSubmit(avion);
+                datacontext.AVIONs.InsertOnSubmit(avion);
                 datacontext.SubmitChanges();
 
 
@@ -39,27 +53,28 @@ namespace Reservas_Admin
             }
         }
 
-        public List<Avion> mostrarAvion()
+        public List<AVION> mostrarAvion()
         {
 
-            var v = datacontext.Avions.ToList();
+            var v = datacontext.AVIONs.ToList();
 
-            var data = v.Select(q => new Avion
+            var data = v.Select(q => new AVION
             {
-                Id = q.Id,
-                Descripcion = q.Descripcion
+                ID = q.ID,
+                DESCRIPCION = q.DESCRIPCION
             }).ToList();
 
             return data;
         }
 
 
-        public void editarAvion(int i) {
-            Avion a = datacontext.Avions.FirstOrDefault(q => q.Id == i);
+        public void editarAvion(int i)
+        {
+            AVION a = datacontext.AVIONs.FirstOrDefault(q => q.ID == i);
 
-            a.Descripcion = Console.ReadLine();
+            a.DESCRIPCION = Console.ReadLine();
 
-            datacontext.Avions.InsertOnSubmit(a);
+            datacontext.AVIONs.InsertOnSubmit(a);
             datacontext.SubmitChanges();
 
         }

@@ -9,10 +9,10 @@ namespace Reservas_Admin
 {
     class VueloManager//faltan todas las validaciones
     {
-        DataLayerDataContext datacontext = new DataLayerDataContext();
+        DataClassesReservasDataContext datacontext = new DataClassesReservasDataContext();
 
-        AvionManager am = new AvionManager();
-        Vuelo vuelo = new Vuelo();
+        AvionManager am = AvionManager.Instance;
+        VUELO vuelo = new VUELO();
 
         public void agregarVuelos()//faltan validaciones
         {

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Reservas_Vuelo {
     public partial class SeleccionVuelo : Form {
-        private static DataLayerDataContext datacontext = new DataLayerDataContext();
+        private static DataClassesReservasDataContext datacontext = new DataClassesReservasDataContext();
 
         public SeleccionVuelo() {
             InitializeComponent();
@@ -19,8 +19,23 @@ namespace Reservas_Vuelo {
         }
 
         private void btnVerFecha_Click(object sender, EventArgs e) {
-            SlideTo(400);
+            SlideTo(500);
             cmbDestino.Enabled = false;
+            var value = cmbDestino.SelectedItem;
+                        
+            var fechas = (from v in datacontext.VIAJEs
+                          join  vu in datacontext.VUELOs on v.ID_VUELO equals vu.ID
+                          where v.FECHA > DateTime.Now
+                            && vu.ORIGEN==cmbOrigen.Text
+                            && vu.DESTINO == cmbDestino.Text
+                          select v.FECHA).ToList();
+            lstFecha.Items.Clear();
+            foreach (var fecha in fechas)
+            {
+                lstFecha.Items.Add(fecha);
+            }
+            
+            cmbOrigen.Enabled = false;
         }
         private void SlideTo(int height) {
             int step = 5;
@@ -34,6 +49,9 @@ namespace Reservas_Vuelo {
         }
 
         private void btnSlideOrigen_Click(object sender, EventArgs e) {
+            
+            cmbDestino.SelectedItem=null;
+            cmbDestino.Items.Clear(); 
             SlideTo(135);
             cmbOrigen.Enabled = true;
         }
@@ -44,18 +62,18 @@ namespace Reservas_Vuelo {
         }
 
         private void btnVerDestino_Click(object sender, EventArgs e) {
-            var destinos = (from v in datacontext.Vuelos
-                                     where v.Origen == cmbOrigen.Text
-                                     select v.Origen);
+            var destinos = (from v in datacontext.VUELOs
+                                     where v.ORIGEN == cmbOrigen.Text
+                                     select v.DESTINO);
             cmbDestino.Items.AddRange(destinos.ToArray());
-            SlideTo(230);
+            SlideTo(300);
             cmbOrigen.Enabled = false;
         }
 
         private void SeleccionVuelo_Load(object sender, EventArgs e) {
 
-            List<string> origenes = (from v in datacontext.Vuelos
-                            select v.Origen).Distinct().ToList();
+            List<string> origenes = (from v in datacontext.VUELOs
+                            select v.ORIGEN).Distinct().ToList();
             cmbOrigen.Items.AddRange(origenes.ToArray());
             
         }
@@ -65,6 +83,11 @@ namespace Reservas_Vuelo {
             sa.Show();
             sa.Previous = this;
             this.Hide();
+        }
+
+        private void lstFecha_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
