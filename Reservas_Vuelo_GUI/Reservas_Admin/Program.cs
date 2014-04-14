@@ -14,52 +14,44 @@ namespace Reservas_Admin
     class Program
     {
 
-
         static void Main(string[] args)
         {
-            #region prueba de agregado de ciudad
-            //CiudadManager c = new CiudadManager();
- 
-            //Console.WriteLine("==============================");    
-            //Console.WriteLine("===LLENANDO LA TABLA CIUDAD===");
-            //Console.WriteLine("==============================");
-            //c.agregarCiudad();
-            #endregion
+            Menus m = new Menus(); bool pass = true;
+            Valid validado = new Valid();
+            m.menuPrincipal();
+            int op = validado.validNum();
 
-            AvionManager am =  AvionManager.Instance;
-
-            #region prueba de agregado de avion
-            //Console.WriteLine("==============================");
-            //Console.WriteLine("===LLENANDO LA TABLA AVION====");
-            //Console.WriteLine("==============================");
-            //am.agregarAvion();
-            #endregion
-
-            #region Listado Avion
-            //Console.WriteLine("==============================");
-            //Console.WriteLine("=======LISTA DE AVIONES=======");
-            //Console.WriteLine("==============================");
-            //var lista = am.buscarAvion();
-
-            //foreach (var c in lista)
-            //{
-
-            //    Console.WriteLine("{0} + {1}", c.Id, c.Descripcion);
-            //};
-
-            //Console.ReadLine();
-            #endregion
-
-            #region Eliminar Avion
-            //Console.WriteLine("==============================");
-            //Console.WriteLine("=======ELIMINAR AVION=========");
-            //Console.WriteLine("==============================");
-
-            //am.eliminarAvion(1);
-            
-            #endregion
-
-        
+            while (pass)
+            {
+                switch (op)
+                {
+                    case 1:
+                        m.menuAvion();
+                        pass = false;
+                        break;
+                    case 2:
+                        m.menuVuelo();
+                        pass = false;
+                        break;
+                    case 3:
+                        pass = false;
+                        break;
+                    case 4:
+                        m.menuCiudad();
+                        pass = false;
+                        break;
+                    case 5:
+                        pass = false;
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("No es una opcion valida");
+                        m.menuPrincipal();
+                        op = validado.validNum();
+                        break;
+                }
+                
+            }
         
         }
 

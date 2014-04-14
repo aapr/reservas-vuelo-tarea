@@ -14,12 +14,7 @@ namespace Reservas_Admin
 
         public void agregarViaje() {
 
-            var listav = vueloM.mostrarVuelos();
-            foreach (var c in listav)
-            {
-                Console.WriteLine("id:{0} idAvion:{1} Origen{2} Destino{3} Hora Salida:{4} Hora LLegada:{5}"
-                    , c.Id, c.Id_Avion, c.Origen, c.Destino, c.Hora_Salida, c.Hora_Llegada);
-            };
+            vueloM.mostrarVueloz();
 
             Console.WriteLine("Id del vuelo utilizado en este viaje");
             int i;            
@@ -53,13 +48,13 @@ namespace Reservas_Admin
 
         public void editarViaje(int i) { 
 
-            VIAJE v = datacontext.VIAJEs.FirstOrDefault(q => q.Id == i);
+            VIAJE v = datacontext.VIAJEs.FirstOrDefault(q => q.ID == i);
             
 
             Console.WriteLine("Nuevo id_vuelo");
             int x = Convert.ToInt32(Console.ReadLine());
-            AVION a = datacontext.AVIONs.FirstOrDefault(q => q.Id == x);
-            v.ID_VUELO = a.Id;
+            AVION a = datacontext.AVIONs.FirstOrDefault(q => q.ID == x);
+            v.ID_VUELO = a.ID;
 
             Console.WriteLine("Escriba la nueva fecha del viaje:");
             string date = Console.ReadLine();

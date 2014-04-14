@@ -12,6 +12,7 @@ namespace Reservas_Admin
         DataClassesReservasDataContext datacontext = new DataClassesReservasDataContext();
 
         AVION avion = new AVION();
+        Valid validado = new Valid();
 
         private static AvionManager instance;
 
@@ -49,15 +50,15 @@ namespace Reservas_Admin
             {
                 Console.WriteLine("Error: 000");
                 Console.ReadKey();
-
             }
+
         }
 
-        public List<AVION> mostrarAvion()
+        private List<AVION> mostrarAvion()
         {
 
             var v = datacontext.AVIONs.ToList();
-
+            Console.WriteLine("Id  | Despricion");
             var data = v.Select(q => new AVION
             {
                 ID = q.ID,
@@ -67,16 +68,52 @@ namespace Reservas_Admin
             return data;
         }
 
+        public void mostrarAvions() {
+            var lista = mostrarAvion();
 
-        public void editarAvion(int i)
+            foreach (var c in lista)
+            {
+             Console.WriteLine("{0} | {1}", c.ID, c.DESCRIPCION);
+            };
+
+        }
+
+
+        private void editarAvion(int i)
         {
-            AVION a = datacontext.AVIONs.FirstOrDefault(q => q.ID == i);
+            bool pass = true;
+            avion = datacontext.AVIONs.FirstOrDefault(q => q.ID == i);
+            while (pass)
+            {
+                if (avion != null)
+                {
+                    pass = false;
+                }
 
-            a.DESCRIPCION = Console.ReadLine();
+                else
+                {
+                    Console.WriteLine("Id del vuelo invalido trate de nuevo:");
+                    i = validado.validNum();
+                    avion = datacontext.AVIONs.FirstOrDefault(q => q.ID == i);
+                }
+            }
+            
+            Console.WriteLine("Introdusca una nueva descipcion:");
+            avion.DESCRIPCION = Console.ReadLine();
 
-            datacontext.AVIONs.InsertOnSubmit(a);
             datacontext.SubmitChanges();
 
+        }
+
+
+        public void editarAvions() {
+            Console.Clear();
+            mostrarAvions();
+
+            Console.WriteLine("id del avion a editar");
+            int op = validado.validNum();
+
+            editarAvion(op);
         }
 
     }
