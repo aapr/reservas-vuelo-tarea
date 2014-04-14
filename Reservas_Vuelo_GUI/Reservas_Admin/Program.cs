@@ -34,6 +34,7 @@ namespace Reservas_Admin
                         pass = false;
                         break;
                     case 3:
+                        m.menuViaje();
                         pass = false;
                         break;
                     case 4:

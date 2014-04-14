@@ -92,7 +92,7 @@ namespace Reservas_Admin
 
                 else
                 {
-                    Console.WriteLine("Id del vuelo invalido trate de nuevo:");
+                    Console.WriteLine("Id del avion invalido trate de nuevo:");
                     i = validado.validNum();
                     avion = datacontext.AVIONs.FirstOrDefault(q => q.ID == i);
                 }

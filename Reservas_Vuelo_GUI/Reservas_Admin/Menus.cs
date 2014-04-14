@@ -12,9 +12,11 @@ namespace Reservas_Admin
         AvionManager A = AvionManager.Instance;
         VueloManager V = new VueloManager();
         CiudadManager C = new CiudadManager();
+        ViajeManager VS = new ViajeManager();
 
         public void menuPrincipal()
         {
+            Console.WriteLine("Seleccione una opcion:");
             Console.WriteLine("Administrar:");
             Console.WriteLine("1)-----Avion");
             Console.WriteLine("2)-----Vuelo");
@@ -29,6 +31,7 @@ namespace Reservas_Admin
         {
             Console.Clear();
             int op; bool pass = true;
+            Console.WriteLine("Seleccione una opcion:");
             Console.WriteLine("AvionManager:");
             Console.WriteLine("1)-----Agregar avion");
             Console.WriteLine("2)-----Editar avion");
@@ -77,6 +80,7 @@ namespace Reservas_Admin
         public void menuVuelo() {
             Console.Clear();
             int op; bool pass = true;
+            Console.WriteLine("Seleccione una opcion:");
             Console.WriteLine("VueloManager:");
             Console.WriteLine("1)-----Agregar vuelo");
             Console.WriteLine("2)-----Editar vuelo");
@@ -126,6 +130,7 @@ namespace Reservas_Admin
         {
             Console.Clear();
             int op; bool pass = true;
+            Console.WriteLine("Seleccione una opcion:");
             Console.WriteLine("CiudadManager:");
             Console.WriteLine("1)-----Agregar ciudad");
             Console.WriteLine("2)-----Editar ciudad");
@@ -167,6 +172,54 @@ namespace Reservas_Admin
         }
         #endregion
 
+
+
+        #region Menu Viaje
+        public void menuViaje()
+        {
+            Console.Clear();
+            int op; bool pass = true;
+            Console.WriteLine("Seleccione una opcion:");
+            Console.WriteLine("ViajeManager:");
+            Console.WriteLine("1)-----Agregar viaje");
+            Console.WriteLine("2)-----Editar viaje");
+            Console.WriteLine("3)-----Mostrar viaje");
+            Console.WriteLine("4)-----Salir");
+
+            op = validado.validNum();
+
+            while (pass)
+            {
+                switch (op)
+                {
+                    case 1:
+                        VS.agregarViaje();
+                        pass = false;
+                        break;
+                    case 2:
+                        VS.editarViajez();
+                        Console.ReadKey();
+                        pass = false;
+                        break;
+                    case 3:
+                        VS.mostrarViajes();
+                        Console.ReadKey();
+                        pass = false;
+                        break;
+                    case 4:
+                        pass = false;
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("No es una opcion valida");
+                        op = validado.validNum();
+                        break;
+                }
+
+            }
+
+        }
+        #endregion
 
 
     }
